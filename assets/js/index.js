@@ -2,9 +2,10 @@ function renderIndex() {
     $.ajax({
         url: '/my/userinfo',
         success: function (res) {
-            console.log(res);
+            // console.log(res);
             // 用户名
-            $('.info .username').text(res.data.username)
+            let username = res.data.nickname || res.data.username;
+            $('.info .username').text(username)
             // 渲染头像
             let avator = res.data.user_pic;
             if (avator) {
@@ -18,7 +19,9 @@ function renderIndex() {
         }
     });
 }
+// 渲染用户信息
 renderIndex()
+
 // 退出登录
 $('.logout').on('click', function () {
     layer.confirm('确定退出登录?', { icon: 3, title: '提示' }, function (index) {
