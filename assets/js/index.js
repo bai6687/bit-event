@@ -3,16 +3,18 @@ function renderIndex() {
         url: '/my/userinfo',
         success: function (res) {
             console.log(res);
+            // 用户名
+            $('.info .username').text(res.data.username)
+            // 渲染头像
             let avator = res.data.user_pic;
             if (avator) {
-                $('.info img').show().attr('src', avator).siblings().hide();
+                $('.info img').show().attr('src', avator).siblings('.avator').hide();
             } else {
                 let first = res.data.username.substr(0, 1).toUpperCase()
-                $('.info span').text(first)
-                $('.info img').hide().siblings().css('display', 'inline-block');
-                // $('.info span').css('display', 'inline-block').siblings().hide()
+                $('.info .avator').text(first)
+                $('.info img').hide().siblings('.avator').css('display', 'inline-block');
             }
-            $('.info .username').text(res.data.username)
+
         }
     });
 }
