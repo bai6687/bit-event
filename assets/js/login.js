@@ -26,7 +26,6 @@ $('.login').on('submit', 'form', function (e) {
             } else if (res.status === 1) {
                 layer.msg(res.message)
             }
-
         }
     });
 })
